@@ -1,41 +1,19 @@
 class company {
-  getCostInvoice() {
-    return 15;
-  }
+  getCostInvoice = () => 15;
+  getCostServiceBasic = () => 7.5;
+  getCostServiceBasicFrom10 = () => 5;
+  getRentPremiumChannel = () => 50;
 
-  getCostServiceBasic() {
-    return 7.5;
-  }
-
-  getCostServiceBasicFrom10() {
-    return 5;
-  }
-
-  getRentPremiumChannel() {
-    return 50;
-  }
-
-  getCableBillOneChannel(numberOfChannel) {
-    const costInvoice = this.getCostInvoice();
-    const costServiceBasic = this.getCostServiceBasic();
-    const costRentPremiumChannel = this.getRentPremiumChannel();
-    const totalPay = costInvoice + costServiceBasic + costRentPremiumChannel * numberOfChannel;
-    return totalPay;
+  getCableBillFrom1(numberOfChannel) {
+    return this.getCostInvoice() + this.getCostServiceBasic() + this.getRentPremiumChannel() * numberOfChannel;
   }
 
   getCableBillFrom1To10(numberOfConnection, numberOfChannel) {
-    const costServiceBasic = this.getCostServiceBasic();
-    const costCableBillOneChannel = this.getCableBillOneChannel(numberOfChannel);
-    const totalPay = costCableBillOneChannel + costServiceBasic * (numberOfConnection - 1);
-    return totalPay;
+    return this.getCableBillFrom1(numberOfChannel) + this.getCostServiceBasic() * (numberOfConnection - 1);
   }
 
   getCableBillFrom10(numberOfConnection, numberOfChannel) {
-    const costServiceBasic = this.getCostServiceBasic();
-    const costServiceBasicFrom10 = this.getCostServiceBasicFrom10();
-    const costCableBillOneChannel = this.getCableBillOneChannel(numberOfChannel);
-    const totalPay = costCableBillOneChannel + costServiceBasic * (10 - 1) + costServiceBasicFrom10 * (numberOfConnection - 10);
-    return totalPay;
+    return this.getCableBillFrom1(numberOfChannel) + this.getCostServiceBasic() * (10 - 1) + this.getCostServiceBasicFrom10() * (numberOfConnection - 10);
   }
 
   getCableBill(numberOfConnection, numberOfChannel) {
@@ -44,7 +22,7 @@ class company {
     }
 
     if (numberOfConnection === 1) {
-      const totalPay = this.getCableBillOneChannel(numberOfChannel);
+      const totalPay = this.getCableBillFrom1(numberOfChannel);
       return totalPay.toLocaleString();
     }
 

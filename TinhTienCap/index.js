@@ -22,11 +22,11 @@ customerTypeEl.addEventListener('change', function () {
 payBillEL.addEventListener('click', function (e) {
   e.preventDefault();
   const customerTypeVal = customerTypeEl.value.toLowerCase();
-  const customerCodeVal = +customerCodeEl.value.replace(/,/g, '.');
-  const numberOfConnectVal = +numberOfConnectEl.value.replace(/,/g, '.');
-  const numberOfChannelVal = +numberOfChannelEl.value.replace(/,/g, '.');
-  outputCustomerCodeEL.innerText = `Mã khách hàng: ${customerCodeVal}`;
-
+  const customerCodeVal = Math.floor(+customerCodeEl.value.split(',').join('.'));
+  const numberOfConnectVal = Math.floor(+numberOfConnectEl.value.split(',').join('.'));
+  const numberOfChannelVal = Math.floor(+numberOfChannelEl.value.split(',').join('.'));
+  // outputCustomerCodeEL.innerText = `Mã khách hàng: ${customerCodeVal}`;
+  console.log(numberOfConnectVal);
   if (customerTypeVal === 'people') {
     const totalPay = people.getCableBill(numberOfChannelVal);
     outputTotalPayEl.innerText = `${totalPay}$`;
