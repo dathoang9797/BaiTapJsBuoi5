@@ -1,6 +1,3 @@
-import peopleObj from './people.js';
-import companyObj from './company.js';
-
 const people = new peopleObj();
 const company = new companyObj();
 const customerCodeEl = document.getElementById('customerCode');

@@ -1,4 +1,4 @@
-class company {
+class companyObj {
   getCostInvoice = () => 15;
   getCostServiceBasic = () => 7.5;
   getCostServiceBasicFrom10 = () => 5;
@@ -37,5 +37,3 @@ class company {
     }
   }
 }
-
-export default company;

@@ -26,7 +26,7 @@ class costElectron {
     }
     return 1100;
   }
-
+d
   getGiaKwFrom350(kw) {
     return 1300 * (kw - 350);
   }
@@ -54,4 +54,3 @@ class costElectron {
   }
 }
 
-export default costElectron;

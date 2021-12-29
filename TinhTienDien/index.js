@@ -1,5 +1,3 @@
-import costElectron from './CostElectron.js';
-
 const soKWEl = document.getElementById('soKW');
 const outputTotalPayEl = document.getElementById('outputTotalPay');
 const hoTenEL = document.getElementById('hoten');
@@ -14,7 +12,5 @@ payBillEL.addEventListener('click', function (e) {
 
   outputTotalPayEl.innerHTML = `
   <p>Họ Tên: ${hoTenVal}</p>
-  <p>Tiền điện phải đóng là: ${costPayBill}</p>
-  
-  `;
+  <p>Tiền điện phải đóng là: ${costPayBill.toLocaleString()} vnđ</p>`;
 });

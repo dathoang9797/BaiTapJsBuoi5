@@ -1,4 +1,4 @@
-class people {
+class peopleObj {
   getCostInvoice = () => 4.5;
   getCostServiceBasic = () => 20.5;
   getRentPremiumChannel = () => 7.5;
@@ -8,4 +8,3 @@ class people {
     return totalPay.toLocaleString();
   }
 }
-export default people;
