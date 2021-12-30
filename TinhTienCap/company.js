@@ -17,23 +17,18 @@ class companyObj {
   }
 
   getCableBill(numberOfConnection, numberOfChannel) {
-    if (numberOfConnection === 0) {
-      return 0;
-    }
+    switch (true) {
+      case numberOfConnection === 0:
+        return 0;
 
-    if (numberOfConnection === 1) {
-      const totalPay = this.getCableBillFrom1(numberOfChannel);
-      return totalPay.toLocaleString();
-    }
+      case numberOfConnection === 1:
+        return this.getCableBillFrom1(numberOfChannel).toLocaleString();
 
-    if (numberOfConnection <= 10) {
-      const totalPay = this.getCableBillFrom1To10(numberOfConnection, numberOfChannel);
-      return totalPay.toLocaleString();
-    }
+      case numberOfConnection <= 10:
+        return this.getCableBillFrom1To10(numberOfConnection, numberOfChannel).toLocaleString();
 
-    if (numberOfConnection > 10) {
-      const totalPay = this.getCableBillFrom10(numberOfConnection, numberOfChannel);
-      return totalPay.toLocaleString();
+      case numberOfConnection > 10:
+        return this.getCableBillFrom10(numberOfConnection, numberOfChannel).toLocaleString();
     }
   }
 }

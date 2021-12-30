@@ -16,23 +16,25 @@ customerTypeEl.addEventListener('change', function () {
   }
 });
 
+const totalPayOfCustomer = (customerTypeVal, numberOfChannelVal, numberOfConnectVal) => {
+  switch (customerTypeVal) {
+    case 'people': {
+      return people.getCableBill(numberOfChannelVal);
+    }
+
+    case 'company': {
+      return company.getCableBill(numberOfConnectVal, numberOfChannelVal);
+    }
+  }
+};
+
 payBillEL.addEventListener('click', function (e) {
   e.preventDefault();
   const customerTypeVal = customerTypeEl.value.toLowerCase();
   const customerCodeVal = Math.floor(+customerCodeEl.value.split(',').join('.'));
   const numberOfConnectVal = Math.floor(+numberOfConnectEl.value.split(',').join('.'));
   const numberOfChannelVal = Math.floor(+numberOfChannelEl.value.split(',').join('.'));
+  const totalPay = totalPayOfCustomer(customerTypeVal, numberOfChannelVal, numberOfConnectVal);
   // outputCustomerCodeEL.innerText = `Mã khách hàng: ${customerCodeVal}`;
-  console.log(numberOfConnectVal);
-  if (customerTypeVal === 'people') {
-    const totalPay = people.getCableBill(numberOfChannelVal);
-    outputTotalPayEl.innerText = `${totalPay}$`;
-    return;
-  }
-
-  if (customerTypeVal === 'company') {
-    const totalPay = company.getCableBill(numberOfConnectVal, numberOfChannelVal);
-    outputTotalPayEl.innerText = `${totalPay}$`;
-    return;
-  }
+  outputTotalPayEl.innerText = `${totalPay}$`;
 });
