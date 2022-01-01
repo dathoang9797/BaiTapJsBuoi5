@@ -17,14 +17,10 @@ customerTypeEl.addEventListener('change', function () {
 });
 
 const totalPayOfCustomer = (customerTypeVal, numberOfChannelVal, numberOfConnectVal) => {
-  switch (customerTypeVal) {
-    case 'people': {
-      return people.getCableBill(numberOfChannelVal);
-    }
-
-    case 'company': {
-      return company.getCableBill(numberOfConnectVal, numberOfChannelVal);
-    }
+  if (customerTypeVal === 'people') {
+    return people.getCableBill(numberOfChannelVal);
+  } else {
+    return company.getCableBill(numberOfConnectVal, numberOfChannelVal);
   }
 };
 

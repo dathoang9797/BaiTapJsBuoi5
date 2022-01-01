@@ -1,36 +1,32 @@
 class costElectron {
   getGiaKwDauTien(kw) {
-    switch (true) {
-      case kw < 50:
-        return 10 * kw;
-      default:
-        return 500;
+    if (kw < 50) {
+      return 10 * kw;
+    } else {
+      return 500;
     }
   }
   getGiaKwFrom50To100(kw) {
-    switch (true) {
-      case kw < 100:
-        return 13 * (kw - 50);
-      default:
-        return 650;
+    if (kw < 100) {
+      return 13 * (kw - 50);
+    } else {
+      return 650;
     }
   }
 
   getGiaKwFrom100To200(kw) {
-    switch (true) {
-      case kw < 200:
-        return 8.5 * (kw - 100);
-      default:
-        return 850;
+    if (kw < 200) {
+      return 8.5 * (kw - 100);
+    } else {
+      return 850;
     }
   }
 
   getGiaKwFrom200To350(kw) {
-    switch (true) {
-      case kw < 350:
-        return 7.3 * (kw - 200);
-      default:
-        return 1100;
+    if (kw < 350) {
+      return 7.3 * (kw - 200);
+    } else {
+      return 1100;
     }
   }
 
