@@ -19,7 +19,7 @@ class companyObj {
   getCableBill(numberOfConnection, numberOfChannel) {
     switch (true) {
       case numberOfConnection === 0:
-        return 0;
+        return this.getCostInvoice() + this.getRentPremiumChannel() * numberOfChannel;
 
       case numberOfConnection === 1:
         return this.getCableBillFrom1(numberOfChannel).toLocaleString();
