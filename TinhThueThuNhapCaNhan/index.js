@@ -33,6 +33,7 @@ payBillEL.addEventListener('click', function (e) {
   e.preventDefault();
   const hoTenVal = hoTenEl.value;
   const tongThuNhapVal = +tongThuNhapEl.value.replace(/,/g, '.');
+  if (!tongThuNhapVal) return;
   const soNguoiPhuThuocVal = +soNguoiPhuThuocEl.value.replace(/,/g, '.');
   const thuNhapChiuThue = tongThuNhapVal - 4 - soNguoiPhuThuocVal * 1.6;
   const thuePhaiTra = tinhThuePhaiTra(thuNhapChiuThue).toFixed(2);

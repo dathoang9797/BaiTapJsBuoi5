@@ -36,6 +36,8 @@ class costElectron {
 
   getTotalBill(kw) {
     switch (true) {
+      case kw === 0:
+        return 0;
       case kw <= 50:
         return this.getGiaKwDauTien(kw);
       case kw <= 100:

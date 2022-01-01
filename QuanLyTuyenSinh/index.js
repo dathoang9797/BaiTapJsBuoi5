@@ -6,6 +6,7 @@ const diemHoaEl = document.getElementById('diemHoa');
 const diemChuanEl = document.getElementById('diemChuan');
 const doiTuongDuThiEl = document.getElementById('doiTuongDuThi');
 const khuVucEl = document.getElementById('khuVuc');
+const hoTenEl = document.getElementById('hoTen');
 
 const getDiemKhuVucA = () => 2;
 const getDiemKhuVucB = () => 1;
@@ -42,6 +43,7 @@ const getDiemDoiTuong = (doiTuong) => {
 
 btnResultEL.addEventListener('click', function (e) {
   e.preventDefault();
+  const hoTenVal = hoTenEl.value;
   const diemToan = +diemToanEl.value.replace(/,/g, '.');
   const diemLy = +diemLyEl.value.replace(/,/g, '.');
   const diemHoa = +diemHoaEl.value.replace(/,/g, '.');
@@ -52,25 +54,36 @@ btnResultEL.addEventListener('click', function (e) {
   const diemDoiTuong = getDiemDoiTuong(doiTuongDuThi);
   const diemTongKet = diemToan + diemLy + diemHoa + diemKhuVuc + diemDoiTuong;
 
-  if (!diemToan || !diemLy || !diemHoa) {
+  if (!diemToan || !diemLy || !diemHoa || !diemChuan) {
     outputTotalPay.innerText = 'Rớt';
     return;
   }
 
   if (diemTongKet >= diemChuan) {
-    outputTotalPay.innerText = 'Đậu';
+    outputTotalPay.innerHTML = `
+    <span>Họ Tên: ${hoTenVal}</span> <br>
+    <span>Điểm Toán: ${diemToan}</span><br>
+    <span>Điểm Lý: ${diemLy}</span><br>
+    <span>Điểm Hóa: ${diemHoa}</span><br>
+    <span>Điểm Chuẩn: ${diemChuan}</span><br>
+    <span>Khu Vực: ${khuVuc.toUpperCase()}</span><br>
+    <span>Đối Tượng: ${doiTuongDuThi}</span><br>
+    <span>Điểm Khu Vực: ${diemKhuVuc}</span><br>
+    <span>Điểm Đối Tượng: ${diemDoiTuong}</span><br>
+    <span>Điểm Tổng Kết: ${diemTongKet}</span><br>
+    <span>Đậu</span>`;
   } else {
-    outputTotalPay.innerText = 'Rớt';
+    outspanutTotalspanay.innerHTML = `
+    <span>Họ Tên: ${hoTenVal}</span><br>
+    <span>Điểm Toán: ${diemToan}</span><br>
+    <span>Điểm Lý: ${diemLy}</span><br>
+    <span>Điểm Hóa: ${diemHoa}</span><br>
+    <span>Điểm Chuẩn: ${diemChuan}</span><br>
+    <span>Khu Vực: ${khuVuc.toUpperCase()}</span><br>
+    <span>Đối Tượng: ${doiTuongDuThi}</span><br>
+    <span>Điểm Khu Vực: ${diemKhuVuc}</span><br>
+    <span>Điểm Đối Tượng: ${diemDoiTuong}</span><br>
+    <span>Điểm Tổng Kết: ${diemTongKet}</span><br>
+    <span>Rớt</span>`;
   }
-
-  //Debug
-  console.log({ diemToan });
-  console.log({ diemLy });
-  console.log({ diemHoa });
-  console.log({ diemChuan });
-  console.log({ khuVuc });
-  console.log({ doiTuongDuThi });
-  console.log({ diemKhuVuc });
-  console.log({ diemDoiTuong });
-  console.log({ diemTongKet });
 });

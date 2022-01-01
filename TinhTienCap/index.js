@@ -17,10 +17,20 @@ customerTypeEl.addEventListener('change', function () {
 });
 
 const totalPayOfCustomer = (customerTypeVal, numberOfChannelVal, numberOfConnectVal) => {
-  if (customerTypeVal === 'people') {
-    return people.getCableBill(numberOfChannelVal);
-  } else {
-    return company.getCableBill(numberOfConnectVal, numberOfChannelVal);
+  switch (customerTypeVal) {
+    case 'people':
+      if (!numberOfChannelVal) {
+        return 0;
+      } else {
+        return people.getCableBill(numberOfChannelVal);
+      }
+
+    case 'company':
+      if (!numberOfChannelVal) {
+        return 0;
+      } else {
+        return company.getCableBill(numberOfConnectVal, numberOfChannelVal);
+      }
   }
 };
 
@@ -32,5 +42,7 @@ payBillEL.addEventListener('click', function (e) {
   const numberOfChannelVal = Math.floor(+numberOfChannelEl.value.split(',').join('.'));
   const totalPay = totalPayOfCustomer(customerTypeVal, numberOfChannelVal, numberOfConnectVal);
   // outputCustomerCodeEL.innerText = `Mã khách hàng: ${customerCodeVal}`;
-  outputTotalPayEl.innerText = `${totalPay}$`;
+  outputTotalPayEl.innerHTML = `
+  <p>Mã Khách Hàng: ${customerCodeVal}</p>
+  <p>Tiền cáp phải đóng là: ${totalPay}$</p>`;
 });
