@@ -31,6 +31,12 @@ const tinhThuePhaiTra = (thuNhapChiuThue) => {
 
 payBillEL.addEventListener('click', function (e) {
   e.preventDefault();
+  outputTotalPayEl.innerHTML = `
+  <p>Họ Tên: </p>
+  <p>Tổng Thu Nhập Năm: </p>
+  <p>Số Người Phụ Thuộc: </p>
+  <p>Tiền Thuế Phải Trả: vnd</p>
+  `;
   const hoTenVal = hoTenEl.value;
   const tongThuNhapVal = +tongThuNhapEl.value.replace(/,/g, '.');
   if (!tongThuNhapVal) return;
